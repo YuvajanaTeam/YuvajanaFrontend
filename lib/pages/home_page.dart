@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuvav1/widgets/MiddleRow4.dart';
 import 'package:yuvav1/widgets/bottom_bar.dart';
 import 'package:yuvav1/widgets/middle_row3.dart';
 import '../widgets/top_bar.dart';
@@ -11,26 +12,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          // This expands and scrolls if needed
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  TopBar(),
-                  MiddleRow1(),
-                  MiddleRow2(),
-                  SizedBox(height: 30,),
-                  MiddleRow3(),
-                ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            const TopBar(),
+            // Main content area that scrolls
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: const [
+                    MiddleRow1(),
+                    MiddleRow2(),
+                    SizedBox(height: 30),
+                    MiddleRow3(),
+                    MiddleRow4(),
+                    BottomBar(),
+                  ],
+                ),
               ),
             ),
-          ),
-
-          // Always sticks to the bottom
-          const BottomBar(),
-        ],
+            // BottomBar(),
+          ],
+        ),
       ),
     );
   }

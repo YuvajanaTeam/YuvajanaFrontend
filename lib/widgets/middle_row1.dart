@@ -14,7 +14,7 @@ class MiddleRow1 extends StatelessWidget {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 800),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // 👈 Vertically centers the content
+            mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text(
                 '“The youth is the hope of our future.”',
