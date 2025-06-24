@@ -1,8 +1,41 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 
-class MiddleRow2 extends StatelessWidget {
-  const MiddleRow2({super.key});
+import 'package:http/http.dart' as http;
 
+import '../providers/constants.dart';
+
+
+class MiddleRow2 extends StatefulWidget {
+  const MiddleRow2({Key? key}) : super(key: key);
+
+  @override
+  _MiddleRow2State createState() => _MiddleRow2State();
+}
+
+class _MiddleRow2State extends State<MiddleRow2> {
+  List magazines = [];
+  @override
+  void initState(){
+    super.initState();
+    getMagazine();
+  }
+  Future getMagazine() async{
+    try{
+      final uri = Uri.parse('$baseUrl/magazine');
+      http.Response response = await http.get(uri
+        //, headers:{HttpHeaders.authorizationHeader:"Bearer"+token
+      );
+      var body = json.decode(response.body);
+      if(response.statusCode==200){
+        magazines = body;
+      }
+    }
+
+    catch(e){
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +58,7 @@ class MiddleRow2 extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              itemCount: 10,
+              itemCount: magazines.length,
               separatorBuilder: (_, __) => const SizedBox(width: 16),
               itemBuilder: (context, index) {
                 return Container(
@@ -47,7 +80,7 @@ class MiddleRow2 extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Book Title ${index + 1}',
+                        magazines[index]['title'],
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

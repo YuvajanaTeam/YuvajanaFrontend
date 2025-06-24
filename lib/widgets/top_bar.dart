@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../pages/login.dart';
+
 class TopBar extends StatelessWidget {
   const TopBar({super.key});
 
@@ -65,7 +67,12 @@ class TopBar extends StatelessWidget {
                       onPressed: () {},
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      },
                       child: const Text('Sign In'),
                     ),
                     TextButton(
@@ -137,7 +144,12 @@ class TopBar extends StatelessWidget {
                       onPressed: () {},
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                        );
+                      },
                       child: const Text('Sign In'),
                     ),
                     TextButton(
