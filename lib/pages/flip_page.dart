@@ -37,27 +37,47 @@ class _FlipPageState extends State<FlipPage> {
       body:
           pagedArticles.isEmpty
               ? const Center(child: CircularProgressIndicator())
-              : PageFlipWidget(
-                key: _controller,
-                backgroundColor: Colors.white,
-                lastPage: MagazinePage(
-                  articles: const [],
-                  advertisements: const [],
-                ),
-                children:
-                    pagedArticles.map((articlesOnPage) {
-                      final pageId =
-                          articlesOnPage
-                              .first
-                              .pageId; // assuming at least one article per page
-                      final adsForPage = pagedAdvertisements[pageId] ?? [];
+              : Stack(
+                children: [
+                  PageFlipWidget(
+                    key: _controller,
+                    backgroundColor: Colors.white,
+                    lastPage: const Material(
+                      child: Center(child: Text("End of Magazine")),
+                    ),
+                    children:
+                        pagedArticles.map((articlesOnPage) {
+                          final pageId = articlesOnPage.first.pageId;
+                          final adsForPage = pagedAdvertisements[pageId] ?? [];
+                          return Material(
+                            child: MagazinePage(
+                              articles: articlesOnPage,
+                              advertisements: adsForPage,
+                            ),
+                          );
+                        }).toList(),
+                  ),
 
-                      return MagazinePage(
-                        articles: articlesOnPage,
-                        advertisements:
-                            adsForPage, // ✅ Now it's a List<AdvertisementModel>
-                      );
-                    }).toList(),
+                  // ◀ Left Button
+                  Positioned(
+                    left: 16,
+                    top: MediaQuery.of(context).size.height / 2 - 30,
+                    child: IconButton(
+                      icon: const Icon(Icons.arrow_back_ios, size: 28),
+                      onPressed: () => _controller.currentState?.previousPage(),
+                    ),
+                  ),
+
+                  // ▶ Right Button
+                  Positioned(
+                    right: 16,
+                    top: MediaQuery.of(context).size.height / 2 - 30,
+                    child: IconButton(
+                      icon: const Icon(Icons.arrow_forward_ios, size: 28),
+                      onPressed: () => _controller.currentState?.nextPage(),
+                    ),
+                  ),
+                ],
               ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../providers/constants.dart';
+
 class MiddleRow1 extends StatelessWidget {
   const MiddleRow1({super.key});
 
@@ -7,14 +9,14 @@ class MiddleRow1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 250,
-      color: Colors.white,
+      color: bannerColor,
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 800),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // 👈 Vertically centers the content
+            mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text(
                 '“The youth is the hope of our future.”',
@@ -32,7 +34,7 @@ class MiddleRow1 extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
-                  color: Colors.grey,
+                  color: Colors.white,
                 ),
               ),
             ],
