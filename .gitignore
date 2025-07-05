@@ -43,3 +43,55 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Android
+/android/.gradle/
+/android/.idea/
+/android/local.properties
+/android/gradle/
+/android/build/
+
+# iOS
+/ios/Pods/
+/ios/.symlinks/
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Flutter.podspec
+/ios/Flutter/App.framework
+/ios/build/
+/ios/Runner.xcworkspace
+
+# macOS
+/macos/Flutter/ephemeral/
+/macos/build/
+/macos/Pods/
+/macos/.symlinks/
+
+# Windows
+/windows/flutter/ephemeral/
+/windows/build/
+
+# Linux
+/linux/flutter/ephemeral/
+/linux/build/
+
+# Web
+/web/.dart_tool/
+/web/build/
+
+# Firebase / CI
+firebase.json
+*.firebase/
+
+# Log/Crash files
+*.lock
+*.tmp
+*.log
+*.crash
+*.stacktrace
+*.symbols
+
+# Dart Tool Metadata
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.generated/
