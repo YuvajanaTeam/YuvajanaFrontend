@@ -14,18 +14,31 @@ class _MiddleRow3State extends State<MiddleRow3> {
   Timer? _scrollTimer1;
   Timer? _scrollTimer2;
 
-  final List<String> boxTitles = [
-    'Category',
-    'Scrolling',
-    'Box 3',
-    'Box 4',
-    'Box 5',
-    'Box 6',
-    'Box 7',
-    'Box 8',
-    'Box 9',
-    'Box 10',
-  ];
+  final Map<String, String> fontMap = {
+    'Christian Discipleship ': 'Lobster',
+    'Christian Identity': 'Raleway',
+    'Spiritual Growth': 'DancingScript',
+    'Faith Over Followers': 'PlayfairDisplay',
+    'Divine pillars': 'Montserrat',
+    'Timeless Discipleship': 'Lobster',
+    'Courageous Faith of St Thomas': 'Raleway',
+    "സഭയും സമാധാനവും": 'DancingScript',
+    "സഭയും രാഷ്ട്രീയവും": 'PlayfairDisplay',
+    "ആത്മീയ ബാല്യം": 'Montserrat',
+  };
+
+  // final List<String> boxTitles = [
+  //   'Christian Discipleship ',
+  //   'Christian Identity',
+  //   'Spiritual Growth',
+  //   'Faith Over Followers',
+  //   'Divine pillars',
+  //   'Timeless Discipleship',
+  //   'Courageous Faith of St Thomas',
+  //   "സഭയും സമാധാനവും",
+  //   "സഭയും രാഷ്ട്രീയവും",
+  //   "ആത്മീയ ബാല്യം"
+  // ];
 
   @override
   void initState() {
@@ -76,13 +89,15 @@ class _MiddleRow3State extends State<MiddleRow3> {
   }
 
   Widget _buildAutoScrollRow(ScrollController controller) {
+    final entries = fontMap.entries.toList(); // Convert map to list of entries
+
     return LayoutBuilder(
       builder: (context, constraints) {
         double screenWidth = MediaQuery.of(context).size.width;
 
-        // Fixed box width for small screens, responsive on larger screens
-        final double boxWidth = screenWidth < 900
-            ? 20
+        final double boxWidth =
+        screenWidth < 900
+            ? screenWidth / 2
             : (constraints.maxWidth - (12 * 6)) / 6;
 
         return ListView.separated(
@@ -90,9 +105,12 @@ class _MiddleRow3State extends State<MiddleRow3> {
           scrollDirection: Axis.horizontal,
           physics: const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          itemCount: boxTitles.length,
+          itemCount: entries.length,
           separatorBuilder: (_, __) => const SizedBox(width: 12),
           itemBuilder: (context, index) {
+            final title = entries[index].key;
+            final font = entries[index].value;
+
             return GestureDetector(
               onTap: () {
                 // Handle box tap
@@ -108,11 +126,12 @@ class _MiddleRow3State extends State<MiddleRow3> {
                   ),
                   child: Center(
                     child: Text(
-                      boxTitles[index],
+                      title,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 13,
+                        fontFamily: font,
                       ),
                     ),
                   ),
@@ -124,6 +143,7 @@ class _MiddleRow3State extends State<MiddleRow3> {
       },
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

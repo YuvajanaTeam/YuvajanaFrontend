@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../providers/constants.dart';
 
@@ -7,9 +8,13 @@ class MiddleRow1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = MediaQuery.of(context).size.width > 800;
     return Container(
-      height: 250,
-      color: bannerColor,
+      height:
+          isDesktop
+              ? MediaQuery.of(context).size.height * 0.6
+              : MediaQuery.of(context).size.height * 0.4,
+      color: primaryColor,
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Center(
@@ -17,7 +22,23 @@ class MiddleRow1 extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 800),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
+              // GestureDetector(
+              //   onTap: () async {
+              //     final uri = Uri.parse("http://google.com");
+              //     if (await canLaunchUrl(uri)) {
+              //       await launchUrl(uri, mode: LaunchMode.externalApplication);
+              //     } else {
+              //       ScaffoldMessenger.of(context).showSnackBar(
+              //         const SnackBar(content: Text('Could not launch URL')),
+              //       );
+              //     }
+              //   },
+              //   child: SizedBox(
+              //     height: MediaQuery.of(context).size.height / 4,
+              //     child: Image.asset('assets/StMary.jpg', fit: BoxFit.contain),
+              //   ),
+              // ),
               Text(
                 '“The youth is the hope of our future.”',
                 textAlign: TextAlign.center,

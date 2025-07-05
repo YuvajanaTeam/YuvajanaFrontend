@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-
-import '../pages/flip_page.dart';
-import '../pages/temporary_flip_page.dart';
+import 'dart:ui'; // for ImageFilter
 
 class MiddleRow2 extends StatelessWidget {
-  const MiddleRow2({super.key});
+  const MiddleRow2
+
+  ({super.key});
 
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> magazines = List.generate(
       1,
-      (i) => {'image': 'assets/mag1.png', 'title': 'Magazine ${i + 1}'},
+          (i) => {'image': 'assets/mag1.png', 'title': 'Magazine ${i + 1}'},
     );
 
-    final isDesktop = MediaQuery.of(context).size.width > 800;
-    final double magazineWidth = isDesktop ? 200 : 120;
-    final double magazineHeight = isDesktop ? 300 : 140;
+    final isDesktop = MediaQuery
+        .of(context)
+        .size
+        .width > 800;
+    final double magazineWidth = isDesktop ? 250 : 160;
+    final double magazineHeight = isDesktop ? 350 : 180;
     const double verticalSpacing = 8;
 
     final double totalCardHeight = (magazineHeight) + verticalSpacing;
@@ -39,71 +42,62 @@ class MiddleRow2 extends StatelessWidget {
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  (magazines.length / 2).ceil(),
-                      (index) {
-                    final int first = index * 2;
-                    final int second = first + 1;
+                children: List.generate((magazines.length / 2).ceil(), (index) {
+                  final int first = index * 2;
+                  final int second = first + 1;
 
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8),
-                      width: magazineWidth,
-                      child: Column(
-                        children: [
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    width: magazineWidth,
+                    child: Column(
+                      children: [
+                        _buildMagazineCard(
+                          context,
+                          magazines[first]['image']!,
+                          magazines[first]['title']!,
+                          magazineWidth,
+                          magazineHeight,
+                        ),
+                        SizedBox(height: verticalSpacing),
+                        if (second < magazines.length)
                           _buildMagazineCard(
                             context,
-                            magazines[first]['image']!,
-                            magazines[first]['title']!,
+                            magazines[second]['image']!,
+                            magazines[second]['title']!,
                             magazineWidth,
                             magazineHeight,
                           ),
-                          SizedBox(height: verticalSpacing),
-                          if (second < magazines.length)
-                            _buildMagazineCard(
-                              context,
-                              magazines[second]['image']!,
-                              magazines[second]['title']!,
-                              magazineWidth,
-                              magazineHeight,
-                            ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                      ],
+                    ),
+                  );
+                }),
               ),
             ),
           ),
-
         ],
       ),
     );
   }
 
-  Widget _buildMagazineCard(
-    BuildContext context,
-    String imgPath,
-    String title,
-    double width,
-    double height,
-  ) {
+  Widget _buildMagazineCard(BuildContext context,
+      String imgPath,
+      String title,
+      double width,
+      double height,) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (BuildContext context) => TemporaryFlipPage(),
-          ),
-        );
+        //GoRouter.of(context).go('/magazine/1');
       },
       child: Stack(
         children: [
+          // Image Container
           Container(
             width: width,
             height: height,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
               image: DecorationImage(
-                image: AssetImage(imgPath),
+                image: AssetImage('assets/Page1.PNG'),
                 fit: BoxFit.cover,
               ),
               boxShadow: [
@@ -115,7 +109,35 @@ class MiddleRow2 extends StatelessWidget {
               ],
             ),
           ),
-          HoverOverlay(title: title, width: width, height: height),
+
+          // Blur overlay
+          Positioned.fill(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+                child: Container(
+                  color: Colors.black.withOpacity(0.4),
+                  alignment: Alignment.center,
+                  child: Center(
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      "Edition 1 \nCOMING SOON",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // Optional: title hover overlay if needed
+          // HoverOverlay(title: title, width: width, height: height),
         ],
       ),
     );

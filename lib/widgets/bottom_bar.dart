@@ -27,12 +27,7 @@ class BottomBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: const FaIcon(FontAwesomeIcons.facebookF, color: Colors.white),
-                onPressed: () => _launchURL('https://facebook.com/yourpage'),
-              ),
-              const SizedBox(width: 16),
-              IconButton(
-                icon: const FaIcon(FontAwesomeIcons.xTwitter, color: Colors.white),
-                onPressed: () => _launchURL('https://x.com/yourpage'),
+                onPressed: () => _launchURL("https://www.facebook.com/share/15XB2mVHmo/?mibextid=qi2Omg"),
               ),
               const SizedBox(width: 16),
               IconButton(
@@ -43,11 +38,6 @@ class BottomBar extends StatelessWidget {
               IconButton(
                 icon: const FaIcon(FontAwesomeIcons.instagram, color: Colors.white),
                 onPressed: () => _launchURL('https://instagram.com/yourpage'),
-              ),
-              const SizedBox(width: 16),
-              IconButton(
-                icon: const FaIcon(FontAwesomeIcons.linkedinIn, color: Colors.white),
-                onPressed: () => _launchURL('https://linkedin.com/in/yourprofile'),
               ),
             ],
           ),

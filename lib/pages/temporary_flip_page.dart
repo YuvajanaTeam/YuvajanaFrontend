@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:page_flip/page_flip.dart';
@@ -27,7 +28,7 @@ class _TemporaryFlipPageState extends State<TemporaryFlipPage> {
   @override
   void initState() {
     super.initState();
-    pageIds = List.generate(5, (i) => i + 1); // Pages 1 to 5
+    pageIds = List.generate(2, (i) => i + 1); // Pages 1 to 5
   }
 
 
@@ -45,9 +46,40 @@ class _TemporaryFlipPageState extends State<TemporaryFlipPage> {
                     children: pageIds.map((pageId) {
                       return Material(
                         child: Center(
-                          child: Image.asset(
-                            'assets/Page$pageId.PNG',
-                            fit: BoxFit.contain,
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(6),
+                                child: Image.asset(
+                                  'assets/Page$pageId.PNG',
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              Positioned.fill(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(6),
+                                  child: BackdropFilter(
+                                    filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+                                    child: Container(
+                                      color: Colors.transparent,
+                                      child: Center(
+                                    child: Text(
+                                    textAlign: TextAlign.center,
+                                      "Edition 1 \nCOMING SOON",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 2,
+                                      ),
+                                    ),
+                                  ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       );
