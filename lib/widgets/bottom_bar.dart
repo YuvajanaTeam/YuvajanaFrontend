@@ -46,7 +46,7 @@ class BottomBar extends StatelessWidget {
           const SizedBox(height: 8),
           // Copyright Text
           Text(
-            '© 2025 Your Company Name. All rights reserved.',
+            '© 2025 Yuvajanashabdam All rights reserved.',
             style: TextStyle(
               color: Colors.grey[300],
               fontSize: 14,

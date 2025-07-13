@@ -44,7 +44,22 @@ class _MagazinePageState extends State<MagazinePage> {
             // Articles
             ...widget.articles.expand((article) {
               List<Widget> widgets = [];
-
+              widgets.add(
+                Positioned(
+                  left: article.titleCoordinates.left.toDouble(),
+                  top: article.titleCoordinates.top.toDouble(),
+                  width: article.titleCoordinates.width.toDouble(),
+                  height: article.titleCoordinates.height.toDouble(),
+                  child: Container(
+                    color: Colors.white.withOpacity(0.8),
+                    padding: const EdgeInsets.all(4),
+                    child: Text(
+                      article.articleTitle,
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              );
               widgets.add(
                 Positioned(
                   left: article.contentCoordinates.left.toDouble(),
@@ -56,7 +71,7 @@ class _MagazinePageState extends State<MagazinePage> {
                     padding: const EdgeInsets.all(4),
                     child: Text(
                       article.content,
-                      style: const TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 5),
                     ),
                   ),
                 ),
@@ -71,7 +86,7 @@ class _MagazinePageState extends State<MagazinePage> {
                     height: article.imageCoordinates.height.toDouble(),
                     child: Image.memory(
                       base64Decode(article.image),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 );
@@ -87,7 +102,9 @@ class _MagazinePageState extends State<MagazinePage> {
                 top: ad.imageCoordinates.top.toDouble(),
                 width: ad.imageCoordinates.width.toDouble(),
                 height: ad.imageCoordinates.height.toDouble(),
-                child: Image.memory(base64Decode(ad.image), fit: BoxFit.cover),
+                child: Image.memory(base64Decode(ad.image),
+                    fit: BoxFit.fill
+                ),
               );
             }),
           ],

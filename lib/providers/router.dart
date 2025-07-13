@@ -1,6 +1,8 @@
 import 'package:go_router/go_router.dart';
 
+import '../pages/admin_page.dart';
 import '../pages/contact_page.dart';
+import '../pages/flip_page.dart';
 import '../pages/gallery_page.dart';
 import '../pages/home_page.dart';
 import '../pages/temporary_flip_page.dart';
@@ -27,6 +29,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/contact',
       builder: (context, state) => const ContactUsPage(),
+    ),
+    GoRoute(
+      path: '/magazine/2',
+      builder: (context, state) => const FlipPage(magazineId: 1,),
     ),
   ],
 );

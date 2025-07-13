@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:go_router/go_router.dart';
 
 import '../config/size_config.dart';
 import '../providers/constants.dart';
@@ -46,12 +47,13 @@ class _AdminPageState extends State<AdminPage> {
           icon: Icon(Icons.home),
           onPressed: () {
             // Navigate to home or perform an action
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (BuildContext context) => FlipPage(magazineId: 1),
-              ),
-              (Route<dynamic> route) => false,
-            );
+            // Navigator.of(context).pushAndRemoveUntil(
+            //   MaterialPageRoute(
+            //     builder: (BuildContext context) => FlipPage(magazineId: 1),
+            //   ),
+            //   (Route<dynamic> route) => false,
+            //);
+            GoRouter.of(context).go('/magazine/2');
           }, // or any route
         ),
         title: Text('Admin Page'),

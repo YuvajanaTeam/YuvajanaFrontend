@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../providers/constants.dart' as Constants;
 
@@ -29,6 +30,7 @@ class GalleryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Gallery'),
         backgroundColor: Constants.primaryColor,
+        leading: IconButton(onPressed: ()=>GoRouter.of(context).go('/'), icon: const Icon(Icons.arrow_back))
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

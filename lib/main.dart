@@ -11,20 +11,7 @@ void main() {
   usePathUrlStrategy();
   runApp(const MyApp());
 }
-final GoRouter _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      path: '/magazine/1',
-      builder: (context, state) {
-        return TemporaryFlipPage();
-      },
-    ),
-  ],
-);
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

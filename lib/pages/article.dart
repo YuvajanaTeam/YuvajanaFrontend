@@ -117,6 +117,7 @@ class _ArticleState extends State<Article> {
                           subCategory: subCategoryController.text,
                           content: contentController.text,
                           image: image ?? "",
+                          titleCoordinates: Coordinates(top: 400, left: 100, width: 150, height: 150),
                           contentCoordinates: Coordinates(top: 400, left: 100, width: 150, height: 150),
                           imageCoordinates: Coordinates(top: 450, left: 100, width: 150, height: 150),
                           language: languageController.text,

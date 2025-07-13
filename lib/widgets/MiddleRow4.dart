@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 
 class MiddleRow4 extends StatelessWidget {
   const MiddleRow4({super.key});
@@ -8,24 +9,41 @@ class MiddleRow4 extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> articles = [
       {
-        'title': 'Empowering Rural Youth',
+        'title':
+            'The Role of the Church in Sustaining and Nurturing Discipleship',
         'subtitle':
-        'A new government initiative is bringing skills training to remote villages, opening doors for rural youth.',
+            'The church has long been a cornerstone of Christian faith, providing a '
+            'community of believers who come together to worship, learn, and '
+            'support one another. But is the church essential for sustaining '
+            'and nurturing discipleship? Let'
+            's explore this topic with biblical'
+            ' insights.',
       },
       {
-        'title': 'Tech in Agriculture',
+        'title': 'Christian Discipleship in Present-Day Society',
         'subtitle':
-        'Farmers are now using AI-powered apps to track crop health and optimize yield. A big leap forward for agri-tech.',
+            'The Holy Bible introduced us to the concept of discipleship within '
+            'a specific historical context. Applying discipleship to today’s '
+            'modern world may seem challenging—but is it? People were '
+            'complicated then, just as we are now. One key difference is '
+            'that we have gadgets that make life easier.',
       },
       {
-        'title': 'Startup Boom in Small Towns',
+        'title': 'എന്താണ് മിന്നൽ വള ?',
         'subtitle':
-        'Small towns are becoming new hubs for innovation as young entrepreneurs find success away from metros.',
+            '1980 മുതൽ പാട്ടെഴുതി നമ്മെ വിസ്മയിപ്പിക്കുകയും ഒപ്പം നമ്മൾ '
+            'മൂളിപാടുകയും ചെയ്ത മനോഹര ഗാനങ്ങൾ രചിച്ച കൈതപ്രം '
+            'ദാമോദരൻ നമ്പൂതിരി മിന്നൽ വള എന്ന ഗാന രചനയിലൂടെ 2025 ലും'
+            ' നമ്മെ വിസ്മയിപ്പിക്കുന്നു. എവിടെ തിരിഞ്ഞാലും മിന്നൽ വളയും '
+            'അതിൻ്റെ പാരഡി ഗാനങ്ങളാലും സമൂഹ മാധ്യമങ്ങൾ സമ്പന്നമാണ്. ',
       },
       {
-        'title': 'Education Reform',
+        'title': 'സഭയും രാഷ്ട്രീയവും',
         'subtitle':
-        'Rural schools get digital classrooms and e-learning tools thanks to NGO and govt collaboration.',
+            'മുമ്പ് നടന്ന ഒരു  യുവജന പ്രസ്ഥാനത്തിൻ്റെ Chandigarh ഇൽ വച്ച് നടന്ന '
+            'conference ൽ പങ്കെടുക്കുവാൻ ഇടയായി. അവിടെ കോൺഫറൻസ് ന് '
+            'നേതൃത്ത്വം കൊടുക്കാൻ വന്ന കാതോലിക്ക സഭയിലെ അച്ഛൻ ഒരു '
+            'question ചോദിച്ചു എന്താണ് സഭ ?',
       },
     ];
 
@@ -42,11 +60,8 @@ class MiddleRow4 extends StatelessWidget {
         children: [
           const Center(
             child: Text(
-              '📰 Newspaper Highlights',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
+              '📰 Magazine Highlights',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
             ),
           ),
           const SizedBox(height: 30),
@@ -98,7 +113,7 @@ class MiddleRow4 extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomRight,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () => GoRouter.of(context).go('/magazine/1'),
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
                             minimumSize: const Size(60, 30),

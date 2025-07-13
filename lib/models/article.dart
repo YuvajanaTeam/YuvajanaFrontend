@@ -7,6 +7,7 @@ class ArticleModel {
   final String subCategory;
   final String content;
   final String image;
+  final Coordinates titleCoordinates;
   final Coordinates contentCoordinates;
   final Coordinates imageCoordinates;
   final String language;
@@ -20,6 +21,7 @@ class ArticleModel {
     required this.subCategory,
     required this.content,
     required this.image,
+    required this.titleCoordinates,
     required this.contentCoordinates,
     required this.imageCoordinates,
     required this.language,
@@ -35,6 +37,7 @@ class ArticleModel {
       subCategory: json['subCategory'],
       content: json['content'],
       image: json['image'],
+      titleCoordinates: Coordinates.fromJson(json['titleCoordinates']),
       contentCoordinates: Coordinates.fromJson(json['contentCoordinates']),
       imageCoordinates: Coordinates.fromJson(json['imageCoordinates']),
       language: json['language'],

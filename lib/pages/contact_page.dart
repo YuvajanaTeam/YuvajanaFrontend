@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../providers/constants.dart' as Constants;
 
@@ -14,6 +15,7 @@ class ContactUsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Contact Us'),
         backgroundColor: Constants.primaryColor,
+        leading: IconButton(onPressed: ()=> GoRouter.of(context).go('/'), icon: const Icon(Icons.arrow_back),)
       ),
       body: SingleChildScrollView(
         child: Center(
